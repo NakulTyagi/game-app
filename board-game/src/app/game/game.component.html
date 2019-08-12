@@ -1,4 +1,4 @@
-<div id="heading"><h1>Kill or get Killed </h1></div>
+<div id="heading"><h1>Kohinoor </h1></div>
 
 <div id="body">
     <div id="player1">
@@ -31,10 +31,23 @@
          <h2>Player 2 <br> <img id="p2img" src="{{selected2}}" alt=""></h2>
         </div>  
         <button type="button" href="#table" (click)="start()" class="btn btn-light">Fight</button>
+        
 
 </div>
 <!-- Table  -->
 <div id="table">
+
+<div id="p1">
+    <h1>Player1</h1>
+    <img height="30%" width="30%" src="{{selected1}}" alt="">
+    <h2>Health:{{health1}}</h2>
+    <h2 id="img1">Win :</h2>
+    <button type="button" href="#table" (click)="restart()" class="btn btn-light">restart</button> 
+        
+</div>
+
+
+
 <table >
 
     <tr id="row1"><td id="11"></td>
@@ -110,4 +123,18 @@
                                 <td id="88"></td></tr>
 
 </table>
+<div id="p2">
+        <h1>Player2</h1>
+        <img  height="30%" width="30%" src="{{selected2}}" alt="">
+    
+           
+            <h2>Health:{{health2}}</h2>
+            <h2 id="img2">Win </h2>
+            <button type="button" href="#table" (click)="restart()" class="btn btn-light">restart</button>
+            
+            
+            
+    </div>
 </div>
+
+<div id="Result"></div>

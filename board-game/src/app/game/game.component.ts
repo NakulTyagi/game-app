@@ -33,9 +33,13 @@ export class GameComponent implements OnInit {
   shield1:string="https://image.flaticon.com/icons/svg/1867/1867798.svg";
   selected1:any;
   selected2:any;
+  diamond=["45","33","68"];
+  public health1:number=100;
+   public health2:number=100;
   weaponised:any="https://image.flaticon.com/icons/svg/1166/1166522.svg";
-  public weapons =[this.weapon1,this.weapon2,this.weapon3,this.weapon4,this.weapon5];
-  wepos =["","","","",""];
+  public weapons =[this.weapon1,this.weapon2,this.weapon3,this.weapon4,this.weapon5,this.shield1,this.shield1];
+  wepos =["","","","","","",""];
+  obstacles =["","","","","","","","", "","","","","","",""];
 
 
 
@@ -110,30 +114,17 @@ start(){
   this.game();
 }
 
-// player1(){
-//     var row = Math.floor((Math.random() * 8) + 1);
-//     var column =Math.floor((Math.random() * 8) + 1);
-//     var sum= (String)(row*10+column);
-//     var x = document.createElement("IMG");
-//     x.setAttribute("src", this.selected1);
-//     x.setAttribute("width", "40");
-//     x.setAttribute("height", "40");
-//     document.getElementById(sum).appendChild(x);
-// }
-
-// player2(){
-//   var row = Math.floor((Math.random() * 8) + 1);
-//   var column =Math.floor((Math.random() * 8) + 1);
-//   var sum= (String)(row*10+column);
-//   var x = document.createElement("IMG");
-//   x.setAttribute("src", this.selected2);
-//   x.setAttribute("width", "40");
-//   x.setAttribute("height", "40");
-//   document.getElementById(sum).appendChild(x);
-  
-// }
 
 game(){
+  for(var i in this.diamond){
+    var x = document.createElement("IMG");
+    x.setAttribute("src","https://image.flaticon.com/icons/svg/1345/1345524.svg");
+    x.setAttribute("width", "40");
+    x.setAttribute("height", "40");
+    document.getElementById(this.diamond[i]).appendChild(x);
+  }
+ 
+
   var row1 = Math.floor((Math.random() * 8) + 1);
   var column1 =Math.floor((Math.random() * 8) + 1);
   var sum1= (String)(row1*10+column1);
@@ -142,12 +133,14 @@ game(){
   x.setAttribute("width", "40");
   x.setAttribute("height", "40");
   document.getElementById(sum1).appendChild(x);
+  
 
       
-
+ var count1=0;
+ var count2=0;
   var one=this.selected1;
   var two=this.selected2;
-  
+ 
   
   var row2 = Math.floor((Math.random() * 8) + 1);
   var column2 =Math.floor((Math.random() * 8) + 1);
@@ -159,17 +152,37 @@ game(){
   document.getElementById(sum2).appendChild(x);
 
 
-    for(var i in this.weapons){
+
+  //weapons
+    // for(var i in this.weapons){
+    //   var row = Math.floor((Math.random() * 8) + 1);
+    //   var column =Math.floor((Math.random() * 8) + 1);
+    //   var sum= (String)(row*10+column);
+    //   var x = document.createElement("IMG");
+    //   x.setAttribute("src", this.weapons[i]);
+    //   x.setAttribute("width", "40");
+    //   x.setAttribute("height", "40");
+    //   document.getElementById(sum).appendChild(x);
+    //   this.wepos[i]=sum;
+    // }
+
+    //obstacles
+    for(var i in this.obstacles){
       var row = Math.floor((Math.random() * 8) + 1);
       var column =Math.floor((Math.random() * 8) + 1);
       var sum= (String)(row*10+column);
+      if(sum=="45"){
+        sum="88";
+      }
       var x = document.createElement("IMG");
-      x.setAttribute("src", this.weapons[i]);
+      x.setAttribute("src", "https://www.flaticon.com/premium-icon/icons/svg/1840/1840511.svg");
       x.setAttribute("width", "40");
       x.setAttribute("height", "40");
       document.getElementById(sum).appendChild(x);
       this.wepos[i]=sum;
     }
+
+
     var ammo=this.weapons;
     var gun =this.wepos;
     document.onkeydown = function(event) {
@@ -187,20 +200,34 @@ game(){
                       x.setAttribute("height", "40");
                       for(var i in gun){
                       if(gun[i]==sum){
-                      
-                        var y = document.createElement("IMG");
-                        y.setAttribute("src",ammo[i]);
-                        y.setAttribute("width", "40");
-                        y.setAttribute("height", "40");
-                        document.getElementById(sum).appendChild(y);
-
+                          document.getElementById("result").innerHTML="Player 2 Lost";
+                        // var y = document.createElement("IMG");
+                        // y.setAttribute("src",ammo[i]);
+                        // y.setAttribute("width", "40");
+                        // y.setAttribute("height", "40");
+                        // document.getElementById("img2").appendChild(y);
+                          
                       }   
                     }                   
                       document.getElementById(sum).appendChild(x);
+                    if(sum=="45"||sum=="33"||sum=="68"){
+                      count2+=1;
+                      document.getElementById("img2").innerHTML=(String)(count2);
                       
+                    }
                 row1=row;
                 column1=column;
                 document.getElementById(presum).innerHTML=null;
+                if(count1>count2&&count1>1&&count2>1){
+                  document.getElementById("img1").innerHTML="You Won";
+                }
+                else if(count1<count2&&count1>1&&count2>1){
+                  document.getElementById("img2").innerHTML="You Won"; 
+                }
+                else if(count1==1&&count2==1){
+                  document.getElementById("img1").innerHTML="Draw";
+                  document.getElementById("img2").innerHTML="Draw";
+                }
 
               
               }
@@ -219,19 +246,34 @@ game(){
                     x.setAttribute("height", "40");
                     for(var i in gun){
                       if(gun[i]==sum){
-                      
-                        var y = document.createElement("IMG");
-                        y.setAttribute("src",ammo[i]);
-                        y.setAttribute("width", "40");
-                        y.setAttribute("height", "40");
-                        document.getElementById(sum).appendChild(y);
+                        document.getElementById("result").innerHTML="Player 2 Lost";
+                        // var y = document.createElement("IMG");
+                        // y.setAttribute("src",ammo[i]);
+                        // y.setAttribute("width", "40");
+                        // y.setAttribute("height", "40");
+                        // document.getElementById("img2").appendChild(y);
 
                       }   
                     }    
                     document.getElementById(sum).appendChild(x);
+                    if(sum=="45"||sum=="33"||sum=="68"){
+                      count2+=1;
+                      document.getElementById("img2").innerHTML=(String)(count2);
+                      
+                    }
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
+              if(count1>count2&&count1>1&&count2>1){
+                document.getElementById("img1").innerHTML="You Won";
+              }
+              else if(count1<count2&&count1>1&&count2>1){
+                document.getElementById("img2").innerHTML="You Won"; 
+              }
+              else if(count1==1&&count2==1){
+                document.getElementById("img1").innerHTML="Draw";
+                document.getElementById("img2").innerHTML="Draw";
+              }
             }
               // alert('Up key pressed');
             break;
@@ -247,19 +289,34 @@ game(){
                     x.setAttribute("height", "40");
                     for(var i in gun){
                       if(gun[i]==sum){
-                      
-                        var y = document.createElement("IMG");
-                        y.setAttribute("src",ammo[i]);
-                        y.setAttribute("width", "40");
-                        y.setAttribute("height", "40");
-                        document.getElementById(sum).appendChild(y);
+                        document.getElementById("result").innerHTML="Player 2 Lost";
+                        // var y = document.createElement("IMG");
+                        // y.setAttribute("src",ammo[i]);
+                        // y.setAttribute("width", "40");
+                        // y.setAttribute("height", "40");
+                        // document.getElementById("img2").appendChild(y);
 
                       }   
                     }    
                     document.getElementById(sum).appendChild(x);
+                    if(sum=="45"||sum=="33"||sum=="68"){
+                      count2+=1;
+                      document.getElementById("img2").innerHTML=(String)(count2);
+                      
+                    }
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
+              if(count1>count2&&count1>1&&count2>1){
+                document.getElementById("img1").innerHTML="You Won";
+              }
+              else if(count1<count2&&count1>1&&count2>1){
+                document.getElementById("img2").innerHTML="You Won"; 
+              }
+              else if(count1==1&&count2==1){
+                document.getElementById("img1").innerHTML="Draw";
+                document.getElementById("img2").innerHTML="Draw";
+              }
             }
               // alert('Right key pressed');
             break;
@@ -275,19 +332,34 @@ game(){
                     x.setAttribute("height", "40");
                     for(var i in gun){
                       if(gun[i]==sum){
-                      
-                        var y = document.createElement("IMG");
-                        y.setAttribute("src",ammo[i]);
-                        y.setAttribute("width", "40");
-                        y.setAttribute("height", "40");
-                        document.getElementById(sum).appendChild(y);
+                        document.getElementById("result").innerHTML="Player 2 Lost";
+                        // var y = document.createElement("IMG");
+                        // y.setAttribute("src",ammo[i]);
+                        // y.setAttribute("width", "40");
+                        // y.setAttribute("height", "40");
+                        // document.getElementById("img2").appendChild(y);
 
                       }   
                     }       
                     document.getElementById(sum).appendChild(x);
+                    if(sum=="45"||sum=="33"||sum=="68"){
+                      count2+=1;
+                      document.getElementById("img2").innerHTML=(String)(count2);
+                      
+                    }
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
+              if(count1>count2&&count1>1&&count2>1){
+                document.getElementById("img1").innerHTML="You Won";
+              }
+              else if(count1<count2&&count1>1&&count2>1){
+                document.getElementById("img2").innerHTML="You Won"; 
+              }
+              else if(count1==1&&count2==1){
+                document.getElementById("img1").innerHTML="Draw";
+                document.getElementById("img2").innerHTML="Draw";
+              }
             }
               // alert('Down key pressed');
             break;
@@ -303,10 +375,36 @@ game(){
                   x.setAttribute("src",one);
                   x.setAttribute("width", "40");
                   x.setAttribute("height", "40");
+                  for(var i in gun){
+                    if(gun[i]==sum){
+                      document.getElementById("result").innerHTML="Player 2 Lost";
+                      // var y = document.createElement("IMG");
+                      // y.setAttribute("src",ammo[i]);
+                      // y.setAttribute("width", "40");
+                      // y.setAttribute("height", "40");
+                      // document.getElementById("img1").appendChild(y);
+
+                    }   
+                  }   
                   document.getElementById(sum).appendChild(x);
+                  if(sum=="45"||sum=="33"||sum=="68"){
+                    count1+=1;
+                    document.getElementById("img1").innerHTML=(String)(count1);
+                    
+                  }
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
+            if(count1>count2&&count1>1&&count2>1){
+              document.getElementById("img1").innerHTML="You Won";
+            }
+            else if(count1<count2&&count1>1&&count2>1){
+              document.getElementById("img2").innerHTML="You Won"; 
+            }
+            else if(count1==1&&count2==1){
+              document.getElementById("img1").innerHTML="Draw";
+              document.getElementById("img2").innerHTML="Draw";
+            }
           }
             // alert('Up key pressed');
           break;
@@ -321,10 +419,36 @@ game(){
                   x.setAttribute("src",one);
                   x.setAttribute("width", "40");
                   x.setAttribute("height", "40");
+                  for(var i in gun){
+                    if(gun[i]==sum){
+                      document.getElementById("result").innerHTML="Player 2 Lost";
+                      // var y = document.createElement("IMG");
+                      // y.setAttribute("src",ammo[i]);
+                      // y.setAttribute("width", "40");
+                      // y.setAttribute("height", "40");
+                      // document.getElementById("img1").appendChild(y);
+
+                    }   
+                  }   
                   document.getElementById(sum).appendChild(x);
+                  if(sum=="45"||sum=="33"||sum=="68"){
+                    count1+=1;
+                    document.getElementById("img1").innerHTML=(String)(count1);
+                    
+                  }
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
+            if(count1>count2&&count1>1&&count2>1){
+              document.getElementById("img1").innerHTML="You Won";
+            }
+            else if(count1<count2&&count1>1&&count2>1){
+              document.getElementById("img2").innerHTML="You Won"; 
+            }
+            else if(count1==1&&count2==1){
+              document.getElementById("img1").innerHTML="Draw";
+              document.getElementById("img2").innerHTML="Draw";
+            }
           }
           // alert('Left key pressed');
 
@@ -340,10 +464,36 @@ game(){
                     x.setAttribute("src",one);
                     x.setAttribute("width", "40");
                     x.setAttribute("height", "40");
+                    for(var i in gun){
+                      if(gun[i]==sum){
+                        document.getElementById("result").innerHTML="Player 2 Lost";
+                        // var y = document.createElement("IMG");
+                        // y.setAttribute("src",ammo[i]);
+                        // y.setAttribute("width", "40");
+                        // y.setAttribute("height", "40");
+                        // document.getElementById("img1").appendChild(y);
+
+                      }   
+                    }   
                     document.getElementById(sum).appendChild(x);
+                    if(sum=="45"||sum=="33"||sum=="68"){
+                      count1+=1;
+                      document.getElementById("img1").innerHTML=(String)(count1);
+                      
+                    }
               row2=row;
               column2=column;
               document.getElementById(presum).innerHTML=null;
+              if(count1>count2&&count1>1&&count2>1){
+                document.getElementById("img1").innerHTML="You Won";
+              }
+              else if(count1<count2&&count1>1&&count2>1){
+                document.getElementById("img2").innerHTML="You Won"; 
+              }
+              else if(count1==1&&count2==1){
+                document.getElementById("img1").innerHTML="Draw";
+                document.getElementById("img2").innerHTML="Draw";
+              }
             }
               // alert('Down key pressed');
             break;
@@ -358,21 +508,66 @@ game(){
                   x.setAttribute("src",one);
                   x.setAttribute("width", "40");
                   x.setAttribute("height", "40");
+                  for(var i in gun){
+                    if(gun[i]==sum){
+                      document.getElementById("result").innerHTML="Player 2 Lost";
+                     
+                    }   
+                  }   
                   document.getElementById(sum).appendChild(x);
+                  if(sum=="45"||sum=="33"||sum=="68"){
+                    count1+=1;
+                    document.getElementById("img1").innerHTML=(String)(count1);
+                    
+                  }
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
+            if(count1>count2&&count1>1&&count2>1){
+              document.getElementById("img1").innerHTML="You Won";
+            }
+            else if(count1<count2&&count1>1&&count2>1){
+              document.getElementById("img2").innerHTML="You Won"; 
+            }
+            else if(count1==1&&count2==1){
+              document.getElementById("img1").innerHTML="Draw";
+              document.getElementById("img2").innerHTML="Draw";
+            }
           }
             // alert('Right key pressed');
           break;
+          
+        
+
+    
       }
+
+     
+     
+
+
     }
+    
 
-   
-
+ 
 
 }
 
+
+restart(){
+  for(var i=1;i<=8;i++){
+    for(var j=1;j<=8;j++){
+        var row= i*10;
+        var column=j;
+        var sum =(String)(row+column);
+        document.getElementById(sum).innerHTML=null;
+    }
+  }
+  document.getElementById("img1").innerHTML=null;
+  document.getElementById("img2").innerHTML=null;
+  this.game();
+  
+}
 
 
 }

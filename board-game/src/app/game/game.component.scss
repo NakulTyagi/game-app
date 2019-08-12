@@ -1,7 +1,9 @@
 table{
     border: 1px solid black;
     align-content: center;
-    margin-left: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+    float: left;
     height: 800px;
     width: 800px;
     table-layout: fixed;
@@ -68,4 +70,25 @@ h3{
 }
 .select2{
     margin-top: 5%;
+}
+#p1{
+    float: left;
+    margin-left: 7%;
+    height:15%;
+    width: 15%;
+}
+#p2{
+    float: left;
+    margin-left: 5%;
+    height:15%;
+    width: 15%;
+}
+#result{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);   
 }
