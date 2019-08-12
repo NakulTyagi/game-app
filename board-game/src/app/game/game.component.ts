@@ -34,15 +34,19 @@ export class GameComponent implements OnInit {
   selected1:any;
   selected2:any;
   diamond=["45","33","68"];
-  public health1:number=100;
-   public health2:number=100;
   weaponised:any="https://image.flaticon.com/icons/svg/1166/1166522.svg";
   public weapons =[this.weapon1,this.weapon2,this.weapon3,this.weapon4,this.weapon5,this.shield1,this.shield1];
   wepos =["","","","","","",""];
   obstacles =["","","","","","","","", "","","","","","",""];
+  count1=0;
+  count2=0;
 
-
-
+  c1(){
+    this.count1+=1;
+  }
+  c2(){
+    this.count2+=1;
+  }
 
   select11(){
     document.getElementById("player1").style.display="none";
@@ -135,9 +139,9 @@ game(){
   document.getElementById(sum1).appendChild(x);
   
 
-      
- var count1=0;
- var count2=0;
+    var count1=0;
+    var count2=0;  
+
   var one=this.selected1;
   var two=this.selected2;
  
@@ -182,7 +186,7 @@ game(){
       this.wepos[i]=sum;
     }
 
-
+      
     var ammo=this.weapons;
     var gun =this.wepos;
     document.onkeydown = function(event) {
@@ -218,15 +222,20 @@ game(){
                 row1=row;
                 column1=column;
                 document.getElementById(presum).innerHTML=null;
-                if(count1>count2&&count1>1&&count2>1){
+                if(count1>count2&&count1>1&&count2>=0){
                   document.getElementById("img1").innerHTML="You Won";
+                  document.getElementById("win").innerHTML="Player1 Won";
+                  
+                 
                 }
-                else if(count1<count2&&count1>1&&count2>1){
+                else if(count1<count2&&count1>=0&&count2>1){
                   document.getElementById("img2").innerHTML="You Won"; 
+                  document.getElementById("win").innerHTML="Player2 Won";
                 }
                 else if(count1==1&&count2==1){
                   document.getElementById("img1").innerHTML="Draw";
                   document.getElementById("img2").innerHTML="Draw";
+                  
                 }
 
               
@@ -264,11 +273,13 @@ game(){
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
-              if(count1>count2&&count1>1&&count2>1){
+              if(count1>count2&&count1>1&&count2>=0){
                 document.getElementById("img1").innerHTML="You Won";
+                document.getElementById("win").innerHTML="Player1 Won";
               }
-              else if(count1<count2&&count1>1&&count2>1){
+              else if(count1<count2&&count1>=0&&count2>1){
                 document.getElementById("img2").innerHTML="You Won"; 
+                document.getElementById("win").innerHTML="Player2 Won";
               }
               else if(count1==1&&count2==1){
                 document.getElementById("img1").innerHTML="Draw";
@@ -307,11 +318,13 @@ game(){
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
-              if(count1>count2&&count1>1&&count2>1){
+              if(count1>count2&&count1>1&&count2>=0){
                 document.getElementById("img1").innerHTML="You Won";
+                document.getElementById("win").innerHTML="Player1 Won";
               }
-              else if(count1<count2&&count1>1&&count2>1){
+              else if(count1<count2&&count1>=0&&count2>1){
                 document.getElementById("img2").innerHTML="You Won"; 
+                document.getElementById("win").innerHTML="Player2 Won";
               }
               else if(count1==1&&count2==1){
                 document.getElementById("img1").innerHTML="Draw";
@@ -350,11 +363,13 @@ game(){
               row1=row;
               column1=column;
               document.getElementById(presum).innerHTML=null;
-              if(count1>count2&&count1>1&&count2>1){
+              if(count1>count2&&count1>1&&count2>=0){
                 document.getElementById("img1").innerHTML="You Won";
+                document.getElementById("win").innerHTML="Player1 Won";
               }
-              else if(count1<count2&&count1>1&&count2>1){
+              else if(count1<count2&&count1>=0&&count2>1){
                 document.getElementById("img2").innerHTML="You Won"; 
+                document.getElementById("win").innerHTML="Player2 Won";
               }
               else if(count1==1&&count2==1){
                 document.getElementById("img1").innerHTML="Draw";
@@ -395,11 +410,14 @@ game(){
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
-            if(count1>count2&&count1>1&&count2>1){
+            if(count1>count2&&count1>1&&count2>=0){
               document.getElementById("img1").innerHTML="You Won";
+              document.getElementById("win").innerHTML="Player1 Won";
+              
             }
-            else if(count1<count2&&count1>1&&count2>1){
+            else if(count1<count2&&count1>=0&&count2>1){
               document.getElementById("img2").innerHTML="You Won"; 
+              document.getElementById("win").innerHTML="Player2 Won";
             }
             else if(count1==1&&count2==1){
               document.getElementById("img1").innerHTML="Draw";
@@ -439,11 +457,13 @@ game(){
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
-            if(count1>count2&&count1>1&&count2>1){
+            if(count1>count2&&count1>1&&count2>=0){
               document.getElementById("img1").innerHTML="You Won";
+              document.getElementById("win").innerHTML="Player1 Won";
             }
-            else if(count1<count2&&count1>1&&count2>1){
+            else if(count1<count2&&count1>=0&&count2>1){
               document.getElementById("img2").innerHTML="You Won"; 
+              document.getElementById("win").innerHTML="Player2 Won";
             }
             else if(count1==1&&count2==1){
               document.getElementById("img1").innerHTML="Draw";
@@ -484,11 +504,13 @@ game(){
               row2=row;
               column2=column;
               document.getElementById(presum).innerHTML=null;
-              if(count1>count2&&count1>1&&count2>1){
+              if(count1>count2&&count1>1&&count2>=0){
                 document.getElementById("img1").innerHTML="You Won";
+                document.getElementById("win").innerHTML="Player1 Won";
               }
-              else if(count1<count2&&count1>1&&count2>1){
+              else if(count1<count2&&count1>=0&&count2>1){
                 document.getElementById("img2").innerHTML="You Won"; 
+                document.getElementById("win").innerHTML="Player2 Won";
               }
               else if(count1==1&&count2==1){
                 document.getElementById("img1").innerHTML="Draw";
@@ -523,11 +545,14 @@ game(){
             row2=row;
             column2=column;
             document.getElementById(presum).innerHTML=null;
-            if(count1>count2&&count1>1&&count2>1){
+            if(count1>count2&&count1>1&&count2>=0){
               document.getElementById("img1").innerHTML="You Won";
+              document.getElementById("win").innerHTML="Player1 Won";
+              
             }
-            else if(count1<count2&&count1>1&&count2>1){
+            else if(count1<count2&&count1>=0&&count2>1){
               document.getElementById("img2").innerHTML="You Won"; 
+              document.getElementById("win").innerHTML="Player2 Won";
             }
             else if(count1==1&&count2==1){
               document.getElementById("img1").innerHTML="Draw";
@@ -563,6 +588,7 @@ restart(){
         document.getElementById(sum).innerHTML=null;
     }
   }
+  document.getElementById("win").innerHTML="New Game";
   document.getElementById("img1").innerHTML=null;
   document.getElementById("img2").innerHTML=null;
   this.game();

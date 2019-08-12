@@ -36,12 +36,13 @@
 </div>
 <!-- Table  -->
 <div id="table">
-
+<h1 id="win"></h1>
 <div id="p1">
     <h1>Player1</h1>
     <img height="30%" width="30%" src="{{selected1}}" alt="">
-    <h2>Health:{{health1}}</h2>
-    <h2 id="img1">Win :</h2>
+    <h2>Diamonds</h2>
+    <h2 id="img1">Win </h2>
+    <!-- Game Won <h2 id="win2"></h2> -->
     <button type="button" href="#table" (click)="restart()" class="btn btn-light">restart</button> 
         
 </div>
@@ -128,8 +129,9 @@
         <img  height="30%" width="30%" src="{{selected2}}" alt="">
     
            
-            <h2>Health:{{health2}}</h2>
+            <h2>Diamonds</h2>
             <h2 id="img2">Win </h2>
+           <!-- Game Won <h2 id="win2"></h2> -->
             <button type="button" href="#table" (click)="restart()" class="btn btn-light">restart</button>
             
             
