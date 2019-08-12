@@ -18,6 +18,7 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     document.getElementById("table").style.display="none";
     document.getElementById("selected").style.display="none";
+    document.getElementById("instruction").style.display="none";
    // document.getElementById("select2").style.display="none";
     document.getElementById("player2").style.display="none";
   }
@@ -78,7 +79,7 @@ select14(){
 select21(){
   document.getElementById("player1").style.display="none";
     document.getElementById("player2").style.display="none";
-    document.getElementById("selected").style.display="block";
+    document.getElementById("instruction").style.display="block";
 
   this.selected2=this.avatar1;
 }
@@ -87,7 +88,7 @@ select21(){
 select22(){
   document.getElementById("player1").style.display="none";
     document.getElementById("player2").style.display="none";
-    document.getElementById("selected").style.display="block";
+    document.getElementById("instruction").style.display="block";
 
   this.selected2=this.avatar2;
 }
@@ -96,7 +97,7 @@ select22(){
 select23(){
   document.getElementById("player1").style.display="none";
     document.getElementById("player2").style.display="none";
-    document.getElementById("selected").style.display="block";
+    document.getElementById("instruction").style.display="block";
 
   this.selected2=this.avatar3;
 }
@@ -105,7 +106,7 @@ select23(){
 select24(){
   document.getElementById("player1").style.display="none";
     document.getElementById("player2").style.display="none";
-    document.getElementById("selected").style.display="block";
+    document.getElementById("instruction").style.display="block";
   this.selected2=this.avatar4;
 }
 
@@ -116,6 +117,10 @@ start(){
   // this.player1();
   // this.player2();
   this.game();
+}
+instruction(){
+  document.getElementById("instruction").style.display="none";
+  document.getElementById("selected").style.display="block";
 }
 
 
@@ -183,6 +188,7 @@ game(){
       x.setAttribute("width", "40");
       x.setAttribute("height", "40");
       document.getElementById(sum).appendChild(x);
+      document.getElementById(sum).style.boxShadow= " 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)";
       this.wepos[i]=sum;
     }
 

@@ -13,15 +13,24 @@ table{
 td{
      border: 1px solid rgb(75, 141, 216);    
     box-shadow: 0 1px 3px rgba(116, 24, 24, 0.12), 0 1px 2px ;
-    width: 25%;
+    height: 10%;
+    width: 10%;
+    
     text-align:center;
     display: table-cell
     
   
 }
+#instruction{
+    float: left;
+    margin-left: 30%;
+
+}
 td:hover{
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    
 }
+
 
 img{
    // height: 30%;
@@ -46,6 +55,11 @@ img{
     margin-left: 33%;
 }
 #heading{
+    background: #c2e59c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #64b3f4, #c2e59c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #64b3f4, #c2e59c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-weight: 500;    
+    color: azure;
     text-align: center;
 }
 h3{

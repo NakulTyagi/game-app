@@ -1,4 +1,4 @@
-<div id="heading"><h1>Kohinoor </h1></div>
+<div id="heading"><h1>Diamond Rush </h1></div>
 
 <div id="body">
     <div id="player1">
@@ -22,7 +22,20 @@
                     <a href="#player2" (click)="select24()"><img src="{{avatar4}}"  alt=""></a> 
             </div>
     </div>
+   
 </div>
+
+<div id="instruction">
+        <h1>Guidelines</h1>
+        <h2>1. It is a two player game </h2>
+        <h2>2. Game rules - collect more no. of diamonds to win</h2>
+        <h2>3. Player1 navigation is through keys - W A S D</h2>
+        <h2>4. Player2 navigation is through arrow keys </h2>
+        <h2>5. If player collide the remaining player wins automatically </h2>
+        <h2>6. The lost player can be revived simply by pressing any navigation key</h2>
+        <button type="button" top-margin="100px" href="#selescted" (click)="instruction()" class="btn btn-light">Proceed</button>
+
+    </div>
 
 <div id="selected">
     <h2>Player 1    <br>      <img id="p1img" src="{{selected1}}" alt="">
